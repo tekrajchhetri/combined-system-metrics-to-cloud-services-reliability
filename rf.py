@@ -52,7 +52,7 @@ rfparams = {'n_estimators':[100,200,300,500],
             'max_features':['auto','log2','sqrt'],
             'criterion':['gini','entropy'],
             'min_samples_split': [3,5,8,9,10,30,50]}
-rf_gridcv = GridSearchCV(RandomForestClassifier(random_state=42), rfparams, verbose=1, n_jobs=12)
+rf_gridcv = GridSearchCV(RandomForestClassifier(random_state=42), rfparams, verbose=1, n_jobs=12,cv=3)
 rf_gridcv.fit(X_train, y_train)
 y_pred = rf_gridcv.predict(X_test)
 print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
